@@ -1,0 +1,258 @@
+/*
+ *	HOJA DE ESTILOS PRIVADA
+ *
+ */
+table { padding:0px; margin:0px; }
+
+body {
+	/*background-color:#62DFFF;*/
+	background-color:#090;
+	margin:0px; padding:0px;
+	font-family:Tahoma, Geneva, sans-serif;
+	font-size:12px;
+}
+
+
+
+/** MAIN-DOC **/
+.main-doc {
+	padding:0px;
+	margin:0px auto;
+	min-height:400px;
+
+	background-color:#030;
+	width:100%;
+     min-width:960px;
+	
+}
+/** HEADER **/
+.main-doc .header { background-color:#FFF; height:112px; }
+.main-doc .header .logo1 {	float:left; }
+.main-doc .header .logo2 {	float:right; }
+.main-doc .header .logo3 {	float:left;	margin:0px 110px; }
+
+.main-doc .header a.lnk-logout {
+     position:absolute;
+     top:0px;
+     right:170px;
+     color:#00F;
+     text-decoration:none;
+}
+.main-doc .header a.lnk-logout:hover { text-decoration:underline; }
+
+/**  BODY  **/
+.main-doc .body { }
+.main-doc .body .colIzq {
+	width:18%;
+	background-color:#030;
+	min-height:500px;
+	display:block;
+	height:100%;
+	float:left;
+}
+.main-doc .body .colIzq .gadget { padding:5px 5px 0px 5px; }
+
+/* login */
+.main-doc .body .colIzq .gadget table {
+   /* aplica efecto redondeado */
+	border-radius:5px;
+   -webkit-border-radius:5px;
+   -moz-border-radius:5px;
+	background:#090;
+	width:100%;
+}
+.main-doc .body .colIzq .gadget table input[type=text] {
+	width:96%;
+   /* aplica efecto redondeado */
+	border-radius:4px;
+   -webkit-border-radius:4px;
+   -moz-border-radius:4px;
+   border:none;
+   padding:3px;
+}
+.main-doc .body .colIzq .gadget table input[type=password] {
+	width:96%;
+   /* aplica efecto redondeado */
+	border-radius:4px;
+   -webkit-border-radius:4px;
+   -moz-border-radius:4px;
+   border:none;
+   padding:3px;
+}
+.main-doc .body .colIzq .gadget table input[type=submit] {
+	background-color:#060;
+   color:#00B300;
+   border:1px #030 solid;
+   /* aplica efecto redondeado */
+	border-radius:3px;
+   -webkit-border-radius:3px;
+   -moz-border-radius:3px;
+}
+
+/*********** MENU lateral izquiero **************/
+.main-doc .body .colIzq .gadget ul {
+	margin:0px;
+	padding:4px;
+
+	width:auto;
+	list-style:none;
+
+     /* aplica efecto redondeado */
+	border-radius:5px;
+     -webkit-border-radius:5px;
+     -moz-border-radius:5px;
+
+}
+.main-doc .body .colIzq .gadget ul li {
+
+     margin-bottom:5px;
+}
+.main-doc .body .colIzq .gadget ul li a {
+   font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+   font-size:14px;
+	display:block;
+	padding:2px;
+	text-decoration:none;
+	color:#090;
+	
+   border-bottom:1px solid;
+
+}
+.main-doc .body .colIzq .gadget ul li a:hover {
+	display:block;
+	color:#0F0;
+   border-bottom:1px solid;
+}
+
+
+/*********** CONTENEDOR lateral derecho **************/
+.main-doc .body .colDer {
+	width:82%;
+	background-color:#D5F0E2;
+	min-height:500px;
+	float:left;
+     padding-bottom:50px;
+}
+.main-doc .body .colDer .title1 {
+	text-align:center; font-family:  "Trebuchet MS", Arial, Helvetica, sans-serif; font-weight:normal; font-size:36px; color:#090;
+}
+.main-doc .body .colDer .title2 {
+	text-align:center; font-family:  "Trebuchet MS", Arial, Helvetica, sans-serif; font-weight:normal; font-size:24px; color:#090;
+}
+.main-doc .body .colDer .parrafo1 {
+	font-family: sans-serif; color:#090; font-size:13px; padding:0 30px; 
+}
+.main-doc .body .colDer .gallery {
+	min-height:400px;
+	background-color:#CCC;
+	margin:20px 73px;
+}
+
+/***********  estilos para una lista que representara un menu horizontal  ************/
+.main-doc .body .colDer ul {
+	background-color:#030;
+   list-style:none;
+}
+.main-doc .body .colDer ul li {
+	float:left;
+   margin:5px;
+}
+.main-doc .body .colDer ul li a {
+	display:block;
+   padding:3px;
+	color:#00F;
+}
+
+.main-doc .footer {
+	min-height:80px;
+   background-color:#090;
+}
+
+/******************  tabla EMPLEADOS ************************/
+.tbl-usuarios {
+     display:block;
+     width:auto;
+     background-color:#DFD;
+     margin:30px 10px;
+	  cursor:default;
+}
+.tbl-usuarios tbody.tbHead tr {	background-color:#CCC; }
+.tbl-usuarios tbody.tbHead tr th { padding:5px; }
+.tbl-usuarios tbody.tbBody tr { }
+.tbl-usuarios tbody.tbBody tr.tr-selected {	background-color:#8CD385; }
+.tbl-usuarios tbody.tbBody tr.tr-selected:hover {	background-color:#8CD385; }
+.tbl-usuarios tbody.tbBody tr td {	padding:2px 5px; }
+.tbl-usuarios tbody.tbBody tr td.td-chk a {	text-align:center; }
+.tbl-usuarios tbody.tbBody tr:hover { background-color:#B7FFB7; }
+.tbl-usuarios tbody.tbBody tr td a { color:#00F; }
+.tbl-usuarios tbody.tbBody tr td.loading { color:#00F; padding:20px; text-align:center; font-weight:bold; color:#060; font-size:24px; }
+
+/******************  tabla EMPLEADOS ************************/
+.tbl-empleados {
+     display:block;
+     width:auto;
+     background-color:#DFD;
+     margin:30px 10px;
+	  cursor:default;
+}
+.tbl-empleados tbody.tbHead tr {	background-color:#CCC; }
+.tbl-empleados tbody.tbHead tr th { padding:5px; }
+.tbl-empleados tbody.tbBody tr { }
+.tbl-empleados tbody.tbBody tr.tr-selected {	background-color:#8CD385; }
+.tbl-empleados tbody.tbBody tr.tr-selected:hover {	background-color:#8CD385; }
+.tbl-empleados tbody.tbBody tr td {	padding:2px; }
+.tbl-empleados tbody.tbBody tr td.td-chk a {	text-align:center; }
+.tbl-empleados tbody.tbBody tr:hover { background-color:#B7FFB7; }
+.tbl-empleados tbody.tbBody tr td a { color:#00F; }
+.tbl-empleados tbody.tbBody tr td.loading { color:#00F; padding:20px; text-align:center; font-weight:bold; color:#060; font-size:24px; }
+/******************  tabla MUNICIPIOS ************************/
+.tbl-municipios {
+     display:block;
+     width:auto;
+     background-color:#DFD;
+     margin:30px 10px;
+}
+.tbl-municipios tbody.tbHead tr { background-color:#CCC; }
+.tbl-municipios tbody.tbHead tr th { padding:5px; }
+.tbl-municipios tbody.tbBody tr { }
+.tbl-municipios tbody.tbBody tr.tr-selected { background-color:#8CD385; }
+.tbl-municipios tbody.tbBody tr.tr-selected:hover {	background-color:#8CD385; }
+.tbl-municipios tbody.tbBody tr td { padding:2px; }
+.tbl-municipios tbody.tbBody tr td:last-child { text-align:center; }
+.tbl-municipios tbody.tbBody tr:hover { background-color:#B7FFB7; }
+.tbl-municipios tbody.tbBody tr td.loading { color:#00F; padding:20px; text-align:center; font-weight:bold; color:#060; font-size:24px; }
+/******************  tabla NUCLEOS AGRARIOS ************************/
+.tbl-nucleos {
+     display:block;
+     width:auto;
+     background-color:#DFD;
+     margin:30px 10px;
+}
+.tbl-nucleos tbody.tbHead tr { background-color:#CCC; }
+.tbl-nucleos tbody.tbHead tr th { padding:5px; }
+.tbl-nucleos tbody.tbBody tr { }
+.tbl-nucleos tbody.tbBody tr.tr-selected { background-color:#8CD385; }
+.tbl-nucleos tbody.tbBody tr.tr-selected:hover {	background-color:#8CD385; }
+.tbl-nucleos tbody.tbBody tr td { padding:2px; }
+.tbl-nucleos tbody.tbBody tr td:last-child { text-align:center; }
+.tbl-nucleos tbody.tbBody tr:hover { background-color:#B7FFB7; }
+.tbl-nucleos tbody.tbBody tr td.loading { color:#00F; padding:20px; text-align:center; font-weight:bold; color:#060; font-size:24px; }
+
+/******************  tabla NUCLEOS AGRARIOS ************************/
+.tbl-reporte {
+
+     width:auto;
+     background-color:#000;
+     margin:30px 10px;
+}
+.tbl-reporte tbody.tbHead tr { background-color:#E0E0E0; }
+.tbl-reporte tbody.tbHead tr th { padding:10px; }
+.tbl-reporte tbody.tbBody tr { background-color:#FFF; }
+.tbl-reporte tbody.tbBody tr td { padding:8px; }
+.tbl-reporte tbody.tbBody tr td:last-child { text-align:center; }
+.tbl-reporte tbody.tbBody tr:hover { background-color:#B7FFB7; }
+.tbl-reporte tbody.tbBody tr td.loading { color:#00F; padding:20px; text-align:center; font-weight:bold; color:#060; font-size:24px; }
+/***********************  END STYLESHEET  ************************/
+
+
+
