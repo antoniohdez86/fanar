@@ -1,0 +1,7 @@
+SELECT 
+DISTINCT aj_empleados.idEmpleado,
+CONCAT(aj_empleados.nombre , ' ' , aj_empleados.apePat, ' ' ,aj_empleados.apeMat) AS nombre,
+(SELECT aj_usuarios.usuario FROM aj_usuarios WHERE aj_usuarios.idEmpleado=aj_empleados.idEmpleado) AS usuario,
+(SELECT aj_usuarios.isAdmin FROM aj_usuarios WHERE aj_usuarios.idEmpleado=aj_empleados.idEmpleado) AS isAdmin
+FROM aj_empleados, aj_empleado_nucleos 
+WHERE aj_empleado_nucleos.idEmpleado=aj_empleados.idEmpleado
