@@ -1,0 +1,7 @@
+
+USUARIOS
+- 
+
+MUNICIPIOS
+- Cualquier accion que se intente sobre cualquier municipio
+  siempre afecta solamente a huejutla-100
