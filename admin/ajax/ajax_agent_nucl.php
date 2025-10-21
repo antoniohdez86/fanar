@@ -14,6 +14,7 @@
 	$SERVER_MESSAGE = 'MESSAGE_DEFAULT';							//	MENSAJE QUE SE ENVIARA AL CLIENTE (navegador)
 	$SERVER_CODE_RESPONSE = 'CODE_DEFAULT';						//	CODIGO QUE INTERPRETARA EL CLIENTE (navegador)
 	$MODE_CAPTURED = false;
+	$TEST = "";
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 if(!$mode) {
 	$MODE_CAPTURED = true;
@@ -33,6 +34,7 @@ if($mode == 'ins') {
 	$NUCL_ID_MUNIC = $_POST['idMunicipio'];
 	
 	$nucleo = new Nucleo();
+	$nucleo->Nucleo();
 	$nucleo->insertNucleo($NUCL_ID, $NUCL_NAME, $NUCL_TYPE, $NUCL_SUPERF, $NUCL_ID_MUNIC);
 
 	if($munic->error) {
@@ -127,9 +129,10 @@ if($mode == 'list') {
 	
 	$MODE_CAPTURED = true;
 	
-	$NUCL_ID_MUNIC = $_POST['idMunicipio'];
+	$NUCL_ID_MUNIC = $_POST['idMunicipio'] ?? 0;
 	
 	$nucleo = new Nucleo();
+	$nucleo->Nucleo();
 	$TRs = $nucleo->getRowsNucleos($NUCL_ID_MUNIC);  // FILAS DE DATOS DE EMPLEADOS
 
 	if($nucleo->error) { 

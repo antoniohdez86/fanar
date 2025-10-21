@@ -1,5 +1,27 @@
 $(function(){
 	
+	const mensajes = document.getElementById("mensajes");
+	function mostrar_mensaje(texto, tipo="normal"){
+		console.log("tipo",tipo);
+		mensajes.classList.remove("panel-mensaje-success","panel-mensaje-error","panel-mensaje-info","panel-mensaje-warning")
+		switch(tipo)
+		{
+			case "success":
+				mensajes.classList.add("panel-mensaje-success");
+				break;
+			case "error":
+				mensajes.classList.add("panel-mensaje-error");
+				break;
+			case "info":
+				mensajes.classList.add("panel-mensaje-info");
+				break;
+			case "warning":
+				mensajes.classList.add("panel-mensaje-warning");
+				break;
+		}
+		mensajes.innerText = texto;
+		mensajes.style.display="block";
+	}
 	
 	/* ADM - EMPLEADOS */
 	
@@ -26,14 +48,14 @@ $(function(){
 		$option = $('select option:selected', $form1)
 		$radio = $('input:radio[checked]');
 		
-		//alert($radio.length);
+		//mostrar_mensaje($radio.length);
 		//return;
 
 		// comprueba que se haya establecido un modo al formulario
-		if($hidden.val()==''){ alert('Exception: no se ha establecido un modo al formulario'); return; }
+		if($hidden.val()==''){ mostrar_mensaje('Exception: no se ha establecido un modo al formulario'); return; }
 
 		// verifica que todos los campos de texto no esten vacios
-		if(!$text.eq(0).val() || !$text.eq(1).val()){ alert('Todos los campos son requeridos!'); return; }
+		if(!$text.eq(0).val() || !$text.eq(1).val()){ mostrar_mensaje('Todos los campos son requeridos!'); return; }
 		
 		
 		// comprueba el modo del formulario
@@ -43,14 +65,14 @@ $(function(){
 			$ie = "&ie=" + $option.val();			// NOMBRE
 			// verifica que se haya seleccionado un empleado
 			if($option.index()==0) {	
-				alert("Seleccione un empleado para el que se va a crear la cuenta"); 
+				mostrar_mensaje("Seleccione un empleado para el que se va a crear la cuenta"); 
 				return; 
 			}
 		} else if($hidden.val()=='edit') { 
 			$mode = 'upd'; 
 			$ie = "&ine=" + $text.eq(2).val() + "&ie=" + $radio.val(); ; 
 		} else { 
-			alert("Modo de formulario invalido"); return; 
+			mostrar_mensaje("Modo de formulario invalido"); return; 
 		}
 		
 		
@@ -59,7 +81,7 @@ $(function(){
 		// parametros para meticion ajax
 		var ajax_params = "mode=" + $mode + $ie + "&u=" + $text.eq(0).val() + "&p=" + $text.eq(1).val() + "&ia=0";
 
-		//alert(ajax_params); return;
+		//mostrar_mensaje(ajax_params); return;
 		
 		// peticion ajax
 		$.ajax({
@@ -68,11 +90,11 @@ $(function(){
 			data: ajax_params,
 			cache: false,
 			success: function(SERVER_RESPONSE) {
-				if(!SERVER_RESPONSE) { alert("La respuesta del servidor esta vacia"); return; }
+				if(!SERVER_RESPONSE) { mostrar_mensaje("La respuesta del servidor esta vacia"); return; }
 				var DATA = SERVER_RESPONSE.split('|');
-				if( DATA.length != 3 ){	alert("La respuesta del servidor tienen un formato de respuesta incorrecta" + "\n: " + SERVER_RESPONSE); return; }
+				if( DATA.length != 3 ){	mostrar_mensaje("La respuesta del servidor tienen un formato de respuesta incorrecta" + "\n: " + SERVER_RESPONSE); return; }
 				SERVER_CODE = DATA[0], SERVER_MESAGE = DATA[1],	SERVER_TEST = DATA[2];
-				if(SERVER_TEST) {	alert(SERVER_TEST); }
+				if(SERVER_TEST) {	mostrar_mensaje(SERVER_TEST); }
 				switch (SERVER_CODE) {
 					case "USER_SAVED":
 						$(SERVER_MESAGE).prependTo($tbody1);
@@ -89,7 +111,7 @@ $(function(){
 						$option.remove();	// elimina el empleado del combo de "empleados sin cuenta"
 						break;
 					case "ERROR_EXIST_USER":
-						alert(SERVER_MESAGE);
+						mostrar_mensaje(SERVER_MESAGE);
 						return;
 						break;
 					case "USER_UPDATED":
@@ -106,14 +128,14 @@ $(function(){
 						});
 						break;
 					default:
-						alert(SERVER_CODE + "\n" + SERVER_MESAGE);
+						mostrar_mensaje(SERVER_CODE + "\n" + SERVER_MESAGE);
 						return;
 						break;
 				}
 				$dialog1.css('display','none');
 				$bloquer1.css('display','none');
 			},
-			error: function(err) { alert("error: " + err); }
+			error: function(err) { mostrar_mensaje("error: " + err); }
 		});
 	});
 	$dialog1_Cancel.bind('click', function() {
@@ -164,7 +186,7 @@ $(function(){
 				$select = $('select', $form1);
 				$option = $('option',$select);
 				
-				//alert($option.length); return;
+				//mostrar_mensaje($option.length); return;
 				
 				// establece un valor vacio a los textbox, deselecciona el checkbox y selecciona el item 0 del select
 				$text.val('');
@@ -198,13 +220,13 @@ $(function(){
 			case "Editar":
 			
 				// comprueba si la tabla esta vacia
-				if(!$tbody1_rows.length) { alert('Sin registros de usuarios!!'); return; }
+				if(!$tbody1_rows.length) { mostrar_mensaje('Sin registros de usuarios!!'); return; }
 
 				// obtiene el radio seleccionado
 				$radio = $('input:radio[checked]', $tbody1);
 
 				// si no hay ningun radio seleccionado, significa que no se ha seleccionado ninguna fila
-				if(!$radio.length){ alert('Seleccione un registro de un usuario'); return; }
+				if(!$radio.length){ mostrar_mensaje('Seleccione un registro de un usuario'); return; }
 				
 				// obtiene el id del empleado perteneciente al usuario seleccionado
 				$ID_EMPL = $radio.val();
@@ -260,13 +282,13 @@ $(function(){
 
 			
 				// comprueba que la tabla esta vacia
-				if(!$tbody1_rows.length){ alert('Sin registros de usuarios!!'); return; }
+				if(!$tbody1_rows.length){ mostrar_mensaje('Sin registros de usuarios!!'); return; }
 				
 				// obtiene el radio seleccionado
 				$radio = $('input:radio[checked]', $tbody1);
 				
 				// si no hay ningun radio seleccionado, significa que no se ha seleccionado ninguna fila
-				if(!$radio.length){ alert('Seleccione un registro de un usuario'); return; }
+				if(!$radio.length){ mostrar_mensaje('Seleccione un registro de un usuario'); return; }
 
 				// obtiene la fila entera en la que se encuentra el radio seleccionado
 				$row = $radio.parent().parent().parent();
@@ -277,9 +299,9 @@ $(function(){
 				//-----------------------------------------------------------------------------------
 				
 				
-//				alert($('select', $dialog1).html());
+//				mostrar_mensaje($('select', $dialog1).html());
 //				$('select', $dialog1).append("<option value='" + $radio.val() + "'>" + $cells.eq(2).text() + "</option>"); 
-//				alert($('select', $dialog1).html());
+//				mostrar_mensaje($('select', $dialog1).html());
 //				
 //				return;
 				
@@ -300,20 +322,20 @@ $(function(){
 					cache: false,
 					success: function(SERVER_RESPONSE) {
 						if(!SERVER_RESPONSE) {
-							alert("La respuesta del servidor esta vacia");
+							mostrar_mensaje("La respuesta del servidor esta vacia");
 							return false;
 						}
 						var DATA = SERVER_RESPONSE.split('|');
 						if( DATA.length != 3 ){
-							alert("La respuesta del servidor tienen un formato de respuesta incorrecta");
-							alert(": " + SERVER_RESPONSE);
+							mostrar_mensaje("La respuesta del servidor tienen un formato de respuesta incorrecta");
+							mostrar_mensaje(": " + SERVER_RESPONSE);
 							return false;
 						}
 						SERVER_CODE = DATA[0];
 						SERVER_MESAGE = DATA[1];
 						SERVER_TEST = DATA[2];
 				
-						if(SERVER_TEST) {	alert(SERVER_TEST); }
+						if(SERVER_TEST) {	mostrar_mensaje(SERVER_TEST); }
 				
 						switch (SERVER_CODE) {
 							case "USER_DELETED":
@@ -325,14 +347,14 @@ $(function(){
 								});
 								break;
 							case "ERROR_IA":
-								alert(SERVER_MESAGE);
+								mostrar_mensaje(SERVER_MESAGE);
 								break;
 							default:
-								alert(SERVER_CODE + "\n" + SERVER_MESAGE);
+								mostrar_mensaje(SERVER_CODE + "\n" + SERVER_MESAGE);
 								break;
 						}
 					},
-					error: function(err) { alert("error: " + err); }
+					error: function(err) { mostrar_mensaje("error: " + err); }
 				});
 			break;
 		}
@@ -346,20 +368,20 @@ $(function(){
 			cache: false,
 			success: function(SERVER_RESPONSE) {
 				if(!SERVER_RESPONSE) {
-					alert("La respuesta del servidor esta vacia");
+					mostrar_mensaje("La respuesta del servidor esta vacia");
 					return false;
 				}
 				var DATA = SERVER_RESPONSE.split('|');
 				if( DATA.length != 3 ){
-					alert("La respuesta del servidor tienen un formato de respuesta incorrecta");
-					alert(": " + SERVER_RESPONSE);
+					mostrar_mensaje("La respuesta del servidor tienen un formato de respuesta incorrecta");
+					mostrar_mensaje(": " + SERVER_RESPONSE);
 					return false;
 				}
 				SERVER_CODE = DATA[0];
 				SERVER_MESAGE = DATA[1];
 				SERVER_TEST = DATA[2];
 				
-				if(SERVER_TEST) {	alert(SERVER_TEST); }
+				if(SERVER_TEST) {	mostrar_mensaje(SERVER_TEST); }
 				
 				switch (SERVER_CODE) {
 					case "OK_CBO":
@@ -368,11 +390,11 @@ $(function(){
 						return;
 						break;
 					default:
-						alert(SERVER_CODE + "\n" + SERVER_MESAGE);
+						mostrar_mensaje(SERVER_CODE + "\n" + SERVER_MESAGE);
 						break;
 				}
 			},
-			error: function(err) { alert("error: " + err); }
+			error: function(err) { mostrar_mensaje("error: " + err); }
 		});
 	}
 	function getListUsua() {
@@ -383,29 +405,29 @@ $(function(){
 			cache: false,
 			success: function(SERVER_RESPONSE) {
 				if(!SERVER_RESPONSE) {
-					alert("La respuesta del servidor esta vacia");
+					mostrar_mensaje("La respuesta del servidor esta vacia","error");
 					return false;
 				}
 				var DATA = SERVER_RESPONSE.split('|');
 				if( DATA.length != 3 ){
-					alert("La respuesta del servidor tienen un formato de respuesta incorrecta");
-					alert(": " + SERVER_RESPONSE);
+					mostrar_mensaje("La respuesta del servidor tienen un formato de respuesta incorrecta","error");
+					console.error(SERVER_RESPONSE);
 					return false;
 				}
 				SERVER_CODE = DATA[0];
 				SERVER_MESAGE = DATA[1];
 				SERVER_TEST = DATA[2];
 				
-				if(SERVER_TEST) {	alert(SERVER_TEST); }
+				if(SERVER_TEST) {	mostrar_mensaje(SERVER_TEST); }
 				
 				switch (SERVER_CODE) {
 					case "OK_LIST":
-						//alert($tbody1.length)
+						//mostrar_mensaje($tbody1.length)
 						$tbody1.html(SERVER_MESAGE);
 						$tbody1_rows = $('tr', $tbody1);
 						if($tbody1_rows.length == 1 && $tbody1_rows.eq(0).attr('class')=='no-data'){
 							// no hacer nada...
-							alert("La tabla no contiene ningun dato");
+							mostrar_mensaje("La tabla no contiene ningun dato","error");
 						} else {
 							$tbody1_rows.bind('click', function() {
 								$tbody1_rows.removeClass('tr-selected');
@@ -418,13 +440,15 @@ $(function(){
 						}
 						break;
 					default:
-						alert(SERVER_CODE + "\n" + SERVER_MESAGE);
+						//mostrar_mensaje(SERVER_CODE + "\n" + SERVER_MESAGE,"error");
+						mostrar_mensaje("Error al cargar información","error");
+						console.error(SERVER_RESPONSE);
 						break;
 				}
 			},
-			error: function(err) { alert("error: " + err); }
+			error: function(err) { mostrar_mensaje("error: " + err,"error"); }
 		});
 	}
 	getListUsua();
-	getCboEmpl();
+	//getCboEmpl();
 });

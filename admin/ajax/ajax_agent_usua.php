@@ -14,6 +14,7 @@
 	$SERVER_MESSAGE = 'MESSAGE_DEFAULT';							//	MENSAJE QUE SE ENVIARA AL CLIENTE (navegador)
 	$SERVER_CODE_RESPONSE = 'CODE_DEFAULT';						//	CODIGO QUE INTERPRETARA EL CLIENTE (navegador)
 	$MODE_CAPTURED = false;
+	$TEST = "";
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 if(!$mode) {
 	$MODE_CAPTURED = true;
@@ -120,6 +121,7 @@ if($mode == 'list') {
 	$MODE_CAPTURED = true;
 
 	$us = new Usuario();
+	$us->Usuario();
 	
 	$TRs = $us->getRowsUsuarios();  // FILAS DE DATOS DE EMPLEADOS
 

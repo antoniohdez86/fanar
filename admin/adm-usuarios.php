@@ -2,10 +2,27 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
+<link rel="icon" type="image/png" sizes="16x16"  href="../img/favicon2.png">
 <link rel="stylesheet" href="../css/style-admin.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="../css/style-admin-dialogs.css" type="text/css" media="screen" />
 <script src="../js/jquery-1.7.1.min.js"></script>
 <script src="../js/script-admin-usua.js"></script>
+<style>
+	.panel-mensaje {
+		outline: 1px solid; 
+		margin-left:15px;
+		margin-right:15px;
+		padding: 7px;
+		background-color: white;
+		margin-bottom: 5px;
+		margin-top: 5px;
+		display: none;
+	}
+	.panel-mensaje-success { color: green; }
+	.panel-mensaje-error { color: red; }
+	.panel-mensaje-info { color: blue; }
+	.panel-mensaje-warning { color: orange; }
+</style>
 </head>
 <body>
 	<div class="layer-bloquer"></div>
@@ -17,7 +34,7 @@
 					<tr><th>Nuevo Usuario</th></tr>
 					<tr><td>Nombre de Usuario</td></tr>
 					<tr><td><input type="text" name="User" /></td></tr>
-					<tr><td>Contraseña</td></tr>
+					<tr><td>Contraseï¿½a</td></tr>
 					<tr><td><input type="text" name="Pass" /></td></tr>
 					<tr><td>Empleado</td></tr>
 					<tr><td><input type="text" name="Empl" /></td></tr>
@@ -71,12 +88,17 @@
 					<li><a href="#" title="">Eliminar</a></li>
 				</ul>
 				<div style="clear:both;"></div>
+				<div id="mensajes" class="panel-mensaje">Mensaje normal</div>
+				<!-- <div id="mensajes1" class="panel-mensaje panel-mensaje-success">Mensaje de exito</div>
+				<div id="mensajes2" class="panel-mensaje panel-mensaje-error">Mensaje de error</div>
+				<div id="mensajes3" class="panel-mensaje panel-mensaje-info">Mensaje informativo</div>
+				<div id="mensajes4" class="panel-mensaje panel-mensaje-warning">Mensaje de alerta</div> -->
 				<div>
 					<table class="tbl-usuarios" id="tbl-usuarios">
 						<tbody class="tbHead">
 							<tr>
 								<th>Usuario</th>
-								<th>Contraseña</th>
+								<th>Contraseï¿½a</th>
 								<th>Empleado</th>
 								<th>Editar</th>
 								<th>Eliminar</th>

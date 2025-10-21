@@ -38,8 +38,8 @@ class DataTable {
 		
 		function setSourcce_v2($source) {
 				$this->source = $source;
-				$this->NumRows = mysql_num_rows($source);
-				$this->NumFields = mysql_num_fields($source);
+				$this->NumRows = mysqli_num_rows($source);
+				$this->NumFields = mysqli_num_fields($source);
 				
 				//for( $i=0; $i<$this->NumRows; $i++ ) {
 				//		$this->Rows[$i] = mysql_fetch_array( $this->source, MYSQL_BOTH );
@@ -55,7 +55,7 @@ class DataTable {
 
 				for($c = 0; $c < $nRows; $c++){
 					
-					$row = mysql_fetch_array( $this->source, MYSQL_BOTH );
+					$row = mysqli_fetch_array( $this->source, MYSQLI_BOTH );
 					$html_table .= $row[0].'.';
 					$html_table .= $row[1].'.';
 					$html_table .= $row[2].'<br>';
@@ -74,10 +74,10 @@ class DataTable {
 		}
 		function setSourcce($source) {
 				$this->source = $source;
-				$this->NumRows = mysql_num_rows($source);
-				$this->NumFields = mysql_num_fields($source);
+				$this->NumRows = mysqli_num_rows($source);
+				$this->NumFields = mysqli_num_fields($source);
 				for( $i=0; $i<$this->NumRows; $i++ ) {
-						$this->Rows[$i] = mysql_fetch_array( $this->source, MYSQL_BOTH );
+						$this->Rows[$i] = mysqli_fetch_array( $this->source, MYSQLI_BOTH );
 				}
 		}
 		function getNumRows() { return count($this->Rows); }
@@ -86,7 +86,8 @@ class DataTable {
 				if( $this->currentIndex < $this->NumRows ) {
 						$i = $this->currentIndex;
 						$this->currentIndex++;
-						return $this->Row = $this->Rows[$i];
+						$this->Row = $this->Rows[$i];
+						return $this->Row;
 				}
 				return 0;
 		}

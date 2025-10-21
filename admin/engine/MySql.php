@@ -80,7 +80,7 @@ class MySqlConnection {
 				$this->messageError = '';
 				
 				// conecta a la base de datos
-				$this->conexion = @mysql_connect( $this->server, $this->user, $this->password );
+				$this->conexion = @mysqli_connect( $this->server, $this->user, $this->password );
 				
 				// si ocurrio una falla con la conexion
 				if(!$this->conexion){
@@ -89,7 +89,7 @@ class MySqlConnection {
 					return false;
 				}
 				
-				$db_selected =  @mysql_select_db( $this->database, $this->conexion );
+				$db_selected =  @mysqli_select_db( $this->conexion, $this->database );
 				
 				// si ocurrio una falla con la seleccion de la base de datos
 				if(!$db_selected){
@@ -107,13 +107,13 @@ class MySqlConnection {
 		
 		//	CIERRA LA CONEXION
 		function close() {
-				mysql_close($this->conexion);
+				mysqli_close($this->conexion);
 		}
 		
 		//	EJECUTA UNA SENTENCIA Y DEVUELVE EL RESULTADO EN LA PROPIEDAD "$this->source" DEL OBJETO MySqlConnection
 		function executeQuery($query) {
 
-			$this->execute_success = ($this->source = mysql_query( $query, $this->conexion ) ) ? 1 : 0;
+			$this->execute_success = ($this->source = mysqli_query( $this->conexion, $query ) ) ? 1 : 0;
 			return $this->source;
 		}
 		
@@ -121,7 +121,7 @@ class MySqlConnection {
 		function executeUpdate($query) {
 						
 			$this->clearErrorLogs();
-			$this->execute_success = (mysql_query( $query, $this->conexion ) ) ? 1 : 0;
+			$this->execute_success = (mysqli_query( $this->conexion, $query ) ) ? 1 : 0;
 			
 			if(!$this->execute_success) {
 				$this->error = true;
@@ -130,31 +130,31 @@ class MySqlConnection {
 				$this->methodError = 'executeUpdate';
 				return false;
 			}
-			return $this->num_affected_rows = mysql_affected_rows($this->conexion);
+			return $this->num_affected_rows = mysqli_affected_rows($this->conexion);
 		}
 		
 		//	EJECUTA EL UNA SENTENCIA DEL TIPO [ INSERT ] Y DEVUELVE EL NUMERO DE FILAS AFECTADAS
 		function executeInsert($query) {
 			
 			$this->clearErrorLogs();
-			$this->execute_success = (mysql_query( $query, $this->conexion ) ) ? 1 : 0;
+			$this->execute_success = (mysqli_query( $this->conexion, $query ) ) ? 1 : 0;
 			
 			if(!$this->execute_success) {
 				$this->error = true;
-				$this->errorCode = mysql_errno($this->conexion);
+				$this->errorCode = mysqli_errno($this->conexion);
 				$this->messageError = 'No se pudo ejecutar la sentencia sql "'.strtoupper($query).'"';
 				$this->messageErrorTecnico = $this->getInfoError();
 				$this->methodError = 'executeInsert';
 				return false;
 			}
 			
-			return $this->num_affected_rows = mysql_affected_rows($this->conexion);
+			return $this->num_affected_rows = mysqli_affected_rows($this->conexion);
 		}
 		
 		//	EJECUTA EL UNA SENTENCIA DEL TIPO [ DELETE ] Y DEVUELVE EL NUMERO DE FILAS AFECTADAS
 		function executeDelete($query) {
 				$this->clearErrorLogs();
-				$this->execute_success = (mysql_query( $query, $this->conexion ) ) ? 1 : 0;
+				$this->execute_success = (mysqli_query( $this->conexion, $query ) ) ? 1 : 0;
 				if(!$this->execute_success) {
 					$this->error = true;
 					$this->messageError = 'No se pudo ejecutar la sentencia sql "'.strtoupper($query).'"';
@@ -162,7 +162,7 @@ class MySqlConnection {
 					$this->methodError = 'executeDelete';
 					return false;
 				}
-				return $this->num_affected_rows = mysql_affected_rows($this->conexion);
+				return $this->num_affected_rows = mysqli_affected_rows($this->conexion);
 		}
 		
 		//	EJECUTA EL UNA SENTENCIA DEL TIPO [ SELECT ] Y UN IDENTIFICADOR DE TIPO "RECURSO" EL CUAL CONTIENE TODAS LAS FILAS DEVUELTAS POR LA CONSULTA
@@ -170,7 +170,7 @@ class MySqlConnection {
 			
 				$this->clearErrorLogs();
 				
-				$this->execute_success = ($this->source = mysql_query( $query, $this->conexion ) ) ? 1 : 0;
+				$this->execute_success = ($this->source = mysqli_query( $this->conexion, $query ) ) ? 1 : 0;
 				
 				if(!$this->execute_success){
 					
@@ -188,10 +188,10 @@ class MySqlConnection {
 			
 				$query = "SELECT MAX(".$column_name.") AS NuevaClave FROM ".$table_name;
 				
-				$this->execute_success = ($this->source = mysql_query( $query, $this->conexion ) ) ? 1 : 0;
+				$this->execute_success = ($this->source = mysqli_query( $this->conexion, $query ) ) ? 1 : 0;
 				
-				if(mysql_num_rows($this->source) > 0) {
-					$row = mysql_fetch_array($this->source);
+				if(mysqli_num_rows($this->source) > 0) {
+					$row = mysqli_fetch_array($this->source);
 					return $row[0];
 				}
 				return 100;
@@ -215,7 +215,7 @@ class MySqlConnection {
 		
 		//	DEVUELVE UNA CADENA CON EL CODIGO Y MENSAJE DE ERROR
 		function getInfoError() {
-				return ($this->conexion) ? "code: ".mysql_errno($this->conexion).", msg: ".mysql_error($this->conexion)."<br>" : "code: ".mysql_errno().", msg: ".mysql_error()."<br>";
+				return ($this->conexion) ? "code: ".mysqli_errno($this->conexion).", msg: ".mysqli_error($this->conexion)."<br>" : "code: ".mysqli_errno($this->conexion).", msg: ".mysqli_error($this->conexion)."<br>";
 		}
 		
 		//----------------------------------    NUEVOS METODOS AGREGADOS   ----------------------------------------//
@@ -231,7 +231,7 @@ class MySqlConnection {
 				return false;
 			}
 			
-			$datos = split(':', $this->CadenaDeConexion);
+			$datos = explode(':', $this->CadenaDeConexion);
 			
 			if(count($datos) != 4){
 				$this->error = true;
@@ -247,7 +247,7 @@ class MySqlConnection {
 	
 	
 			// conecta a la base de datos
-			$this->conexion = @mysql_connect( $SERVER, $USER, $PASSWORD );
+			$this->conexion = @mysqli_connect( $SERVER, $USER, $PASSWORD );
 			
 			// si ocurrio una falla con la conexion
 			if(!$this->conexion){
@@ -258,7 +258,7 @@ class MySqlConnection {
 				return false;
 			}
 				
-			$db_selected =  @mysql_select_db( $DATABASE, $this->conexion );
+			$db_selected =  @mysqli_select_db( $this->conexion, $DATABASE );
 				
 			// si ocurrio una falla con la seleccion de la base de datos
 			if(!$db_selected){

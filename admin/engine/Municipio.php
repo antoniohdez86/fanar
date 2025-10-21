@@ -65,6 +65,7 @@ class Municipio extends MyObject {
 		}
 		
 		$dt = new DataTable();
+		$dt->DataTable();
 		$dt->setSourcce($mysql->source);
 		
 		$mysql->close();
@@ -120,6 +121,7 @@ class Municipio extends MyObject {
 		}
 		
 		$dt = new DataTable();
+		$dt->DataTable();
 		$dt->setSourcce($mysql->source);
 		
 		$mysql->close();

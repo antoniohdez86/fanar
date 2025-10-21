@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
+<link rel="icon" type="image/png" sizes="16x16"  href="img/favicon2.png">
 <link rel="stylesheet" href="js/nivo.slider/nivo-slider.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="css/style-public.css" type="text/css" media="screen" />
 <script src="js/jquery-1.7.1.min.js"></script>
@@ -23,6 +24,7 @@ body {
 	<div class="body">
       	<div class="colIzq">
          	<div class="gadget">
+               <!-- FORM LOGIN -->
             	<form name="login" method="post" action="">
             	<table>
                	<tbody>
@@ -35,6 +37,7 @@ body {
                   </tbody>
                </table>
                </form>
+               <!-- FORM LOGIN -->
             </div>
          	<div class="gadget">
             	<ul class="mnu-css2">

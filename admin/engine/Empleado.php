@@ -128,6 +128,7 @@ class Empleado extends MyObject {
 		}
 		
 		$dt = new DataTable();
+		$dt->DataTable();
 		$dt->setSourcce($mysql->source);
 		
 		$mysql->close();

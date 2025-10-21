@@ -2,9 +2,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
+<link rel="icon" type="image/png" sizes="16x16"  href="../img/favicon2.png">
 <link rel="stylesheet" href="../css/style-admin.css" type="text/css" media="screen" />
 <script src="../js/jquery-1.7.1.min.js"></script>
 <script src="../js/script-admin.js"></script>
+<base href="/admin/">
 </head>
 <body>
 	<div class="main-doc">
@@ -18,13 +20,13 @@
 			<div class="colIzq">
 				<div class="gadget">
 					<ul>
-               	<li><a href="index.php" title="">INICIO</a></li>
-                  <li><a href="adm-usuarios.php" title="">USUARIOS</a></li>
-						<li><a href="adm-empleados.php" title="">EMPLEADOS</a></li>
-						<li><a href="adm-municipios.php" title="">MUNICIPIOS</a></li>
-						<li><a href="adm-nucleos.php" title="">NUCLEOS AGRARIOS</a></li>
-						<li><a href="adm-seguimientos.php" title="">SEGUIMIENTOS</a></li>
-                  <li><a href="adm-reportes.php" title="">REPORTE DE PROBLEMATICA OPERATIVA DEL PROGRAMA FANAR 1012</a></li>
+               	<li><a href="./index.php" title="">INICIO</a></li>
+                  <li><a href="./adm-usuarios.php" title="">USUARIOS</a></li>
+						<li><a href="./adm-empleados.php" title="">EMPLEADOS</a></li>
+						<li><a href="./adm-municipios.php" title="">MUNICIPIOS</a></li>
+						<li><a href="./adm-nucleos.php" title="">NUCLEOS AGRARIOS</a></li>
+						<li><a href="./adm-seguimientos.php" title="">SEGUIMIENTOS</a></li>
+                  <li><a href="./adm-reportes.php" title="">REPORTE DE PROBLEMATICA OPERATIVA DEL PROGRAMA FANAR 1012</a></li>
 					</ul>
 				</div>
 			</div>

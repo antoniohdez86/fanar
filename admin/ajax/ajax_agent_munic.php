@@ -13,6 +13,7 @@
 	$SERVER_MESSAGE = 'MESSAGE_DEFAULT';							//	MENSAJE QUE SE ENVIARA AL CLIENTE (navegador)
 	$SERVER_CODE_RESPONSE = 'CODE_DEFAULT';						//	CODIGO QUE INTERPRETARA EL CLIENTE (navegador)
 	$MODE_CAPTURED = false;
+	$TEST = "";
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 if(!$mode) {
 	$MODE_CAPTURED = true;
@@ -109,6 +110,7 @@ if($mode == 'list') {
 	$MODE_CAPTURED = true;
 
 	$munic = new Municipio();
+	$munic->Municipio();
 		
 	$TRs = $munic->getRowsMunicipios();  // FILAS DE DATOS DE EMPLEADOS
 
@@ -129,6 +131,7 @@ if($mode == 'cbo') {
 	$MODE_CAPTURED = true;
 
 	$munic = new Municipio();
+	$munic->Municipio();
 
 	$cbo = $munic->getComboMunicipios();
 

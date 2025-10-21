@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
+<link rel="icon" type="image/png" sizes="16x16"  href="../img/favicon2.png">
 <link rel="stylesheet" href="../css/style-admin.css" type="text/css" media="screen" />
 <script src="../js/jquery-1.7.1.min.js"></script>
 <script src="../js/script-admin-seg.js"></script>
@@ -195,37 +196,37 @@
 										<td>3</td>
 										<td>30</td>
 										<td>Inicio de los trabajos de medicion</td>
-										<td> </td>
+										<td>ï¿½</td>
 									</tr>
 									<tr>                           	
 										<td>5</td>
 										<td>51</td>
 										<td>Convocatoria a Asamblea de aprobacion 1era. (PA)</td>
-										<td> </td>
+										<td>ï¿½</td>
 									</tr>
 									<tr>                           	
 										<td>3</td>
 										<td>30</td>
 										<td>Inicio de los trabajos de medicion</td>
-										<td> </td>
+										<td>ï¿½</td>
 									</tr>
 									<tr>                           	
 										<td>3</td>
 										<td>30</td>
 										<td>Inicio de los trabajos de medicion</td>
-										<td> </td>
+										<td>ï¿½</td>
 									</tr>
 									<tr>
 										<td>3</td>
 										<td>30</td>
 										<td>Inicio de los trabajos de medicion</td>
-										<td> </td>
+										<td>ï¿½</td>
 									</tr>
 										<tr>
 										<td>3</td>
 										<td>30</td>
 										<td>Inicio de los trabajos de medicion</td>
-										<td> </td>
+										<td>ï¿½</td>
 									</tr>
 								</tbody>
 							</table>
